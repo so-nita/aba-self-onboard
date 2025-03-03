@@ -30,16 +30,20 @@
 <!--</style>-->
 
 <script setup lang="ts">
-import AppSidebar from './components/AppSidebar.vue'
-import { SidebarProvider, SidebarTrigger } from './components/ui/sidebar'
+// import AppSidebar from './components/AppSidebar.vue'
+// import { SidebarProvider, SidebarTrigger } from './components/ui/sidebar'
+import Dashboard  from './pages/Dashboard/index.vue';
+
 </script>
 
 <template>
-  <SidebarProvider>
-    <AppSidebar />
-    <main>
-      <SidebarTrigger />
-      <RouterView />
-    </main>
-  </SidebarProvider>
+  <Dashboard />
+<!--  <SidebarProvider>-->
+<!--    <AppSidebar />-->
+<!--    <main>-->
+<!--      <SidebarTrigger />-->
+<!--      <RouterView />-->
+<!--      <Dashboard />-->
+<!--    </main>-->
+<!--  </SidebarProvider>-->
 </template>
