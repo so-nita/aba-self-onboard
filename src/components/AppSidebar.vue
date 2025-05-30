@@ -1,188 +1,73 @@
+<!-- AppSidebar.vue-->
 <script setup lang="ts">
 import type { SidebarProps } from '../components/ui/sidebar';
-import NavMain from '../components/NavMain.vue'
-import NavProjects from '../components/NavProjects.vue'
-import NavUser from '../components/NavUser.vue'
+import NavbarMain from '../components/NavbarMain.vue'
+import NavUser from '../components/NavUser.vue';
+import { routers }  from '../routers/Routers';
 
 import {
   Sidebar,
+  // SidebarMenuItem,
   SidebarContent,
+  SidebarMenuButton,
   SidebarFooter,
   SidebarHeader,
   SidebarRail,
-  SidebarMenuButton
-} from '../components/ui/sidebar'
-import {
-  AudioWaveform,
-  BookOpen,
-  Bot,
-  Command,
-  Frame,
-  GalleryVerticalEnd,
-  Map,
-  PieChart,
-  Settings2,
-  SquareTerminal,
-} from 'lucide-vue-next'
+} from '../components/ui/sidebar';
+import { UserIcon } from 'lucide-vue-next'
+import { images } from '../assets';
+
+
+const data = {
+ user: {
+   name: "Sonita",
+   email: "dev@gmail.com",
+   avatar: images.user_profile
+ }
+};
+
 const props = withDefaults(defineProps<SidebarProps>(), {
   collapsible: 'icon',
-})
-// This is sample data.
-const data = {
-  user: {
-    name: 'shadcn',
-    email: 'm@example.com',
-    avatar: '/avatars/shadcn.jpg',
-  },
-  teams: [
-    {
-      name: 'Acme Inc',
-      logo: GalleryVerticalEnd,
-      plan: 'Enterprise',
-    },
-    {
-      name: 'Acme Corp.',
-      logo: AudioWaveform,
-      plan: 'Startup',
-    },
-    {
-      name: 'Evil Corp.',
-      logo: Command,
-      plan: 'Free',
-    },
-  ],
-  navMain: [
-    {
-      title: 'Playground',
-      url: '#',
-      icon: SquareTerminal,
-      isActive: true,
-      items: [
-        {
-          title: 'History',
-          url: '#',
-        },
-        {
-          title: 'Starred',
-          url: '#',
-        },
-        {
-          title: 'Settings',
-          url: '#',
-        },
-      ],
-    },
-    {
-      title: 'Models',
-      url: '#',
-      icon: Bot,
-      items: [
-        {
-          title: 'Genesis',
-          url: '#',
-        },
-        {
-          title: 'Explorer',
-          url: '#',
-        },
-        {
-          title: 'Quantum',
-          url: '#',
-        },
-      ],
-    },
-    {
-      title: 'Documentation',
-      url: '#',
-      icon: BookOpen,
-      items: [
-        {
-          title: 'Introduction',
-          url: '#',
-        },
-        {
-          title: 'Get Started',
-          url: '#',
-        },
-        {
-          title: 'Tutorials',
-          url: '#',
-        },
-        {
-          title: 'Changelog',
-          url: '#',
-        },
-      ],
-    },
-    {
-      title: 'Settings',
-      url: '#',
-      icon: Settings2,
-      items: [
-        {
-          title: 'General',
-          url: '#',
-        },
-        {
-          title: 'Team',
-          url: '#',
-        },
-        {
-          title: 'Billing',
-          url: '#',
-        },
-        {
-          title: 'Limits',
-          url: '#',
-        },
-      ],
-    },
-  ],
-  projects: [
-    {
-      name: 'Design Engineering',
-      url: '#',
-      icon: Frame,
-    },
-    {
-      name: 'Sales & Marketing',
-      url: '#',
-      icon: PieChart,
-    },
-    {
-      name: 'Travel',
-      url: '#',
-      icon: Map,
-    },
-  ],
-}
+});
+
+// const isActiveButton = ref<boolean>(false);
+// const toggleActive = () => {
+//   isActiveButton.value = !isActiveButton.value;
+// }
 </script>
+
 <template>
-  <Sidebar v-bind="props">
-    <SidebarHeader>
+  <Sidebar v-bind="props" >
+    <!-- <SidebarHeader class="bg-dark">-->
+    <SidebarHeader class="bg-light dark:bg-dark">
       <SidebarMenuButton
         size="lg"
-        class="data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground"
+        class="data-[state=open]:bg-light  hover:bg-light-hover dark:data-[state=open]:bg-dark rounded-none transition-none"
       >
-        <div class="flex aspect-square size-8 items-center justify-center rounded-lg bg-sidebar-primary text-sidebar-primary-foreground">
-          <component class="size-4" />
-<!--          <img src="/logos/logo.svg" alt="logo" class="size-4" />-->
+        <div class="flex aspect-square size-7 items-center justify-center rounded-lg  bg-primary cursor-pointer ">
+          <component :is="UserIcon" class="size-5 text-white" />
         </div>
         <div class="grid flex-1 text-left text-sm leading-tight">
-              <span class="truncate font-semibold">
-                Acme Inc
-              </span>
-          <span class="truncate text-xs"> Acme Inc </span>
+          <span class="truncate font-inter font-semibold text-dark dark:text-white"> On Board App </span>
+          <span class="truncate text-xs text-secondary dark:text-zinc-300"> Integration App </span>
         </div>
       </SidebarMenuButton>
     </SidebarHeader>
-    <SidebarContent>
-      <NavMain :items="data.navMain" />
-      <NavProjects :projects="data.projects" />
+
+    <SidebarContent class="bg-light dark:bg-dark">
+<!--  <NavMain :items="routers.navMain" :extra-menu="routers.extra" :activeItem="activeItem" @update:active-item="setActiveItem" />-->
+      <NavbarMain :items="routers.navMain" :extra-menu="routers.extra"/>
+<!--      <ExtraSection :extraMenu="routers.extra" />-->
     </SidebarContent>
-    <SidebarFooter>
+
+<!--    <SidebarFooter class="bg-dark ">
+      <NavUser :user="routers.user" class=" text-light hover:bg-primary " />
+    </SidebarFooter>-->
+
+    <SidebarFooter class="bg-light dark:bg-dark">
       <NavUser :user="data.user" />
     </SidebarFooter>
+
     <SidebarRail />
   </Sidebar>
 </template>

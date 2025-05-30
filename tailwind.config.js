@@ -1,55 +1,12 @@
-/** @type {import('tailwindcss').Config} */
 export default {
-    darkMode: ['class'],
-    content: ['./index.html', './src/**/*.{ts,js,vue}'],
+    darkMode: ["class"], // This enables dark mode
+    content: [
+    "./index.html",
+    "./src/**/*.{vue,js,ts,jsx,tsx}",
+  ],
   theme: {
   	extend: {
-  		borderRadius: {
-  			lg: 'var(--radius)',
-  			md: 'calc(var(--radius) - 2px)',
-  			sm: 'calc(var(--radius) - 4px)'
-  		},
   		colors: {
-  			background: 'hsl(var(--background))',
-  			foreground: 'hsl(var(--foreground))',
-  			card: {
-  				DEFAULT: 'hsl(var(--card))',
-  				foreground: 'hsl(var(--card-foreground))'
-  			},
-  			popover: {
-  				DEFAULT: 'hsl(var(--popover))',
-  				foreground: 'hsl(var(--popover-foreground))'
-  			},
-  			primary: {
-  				DEFAULT: 'hsl(var(--primary))',
-  				foreground: 'hsl(var(--primary-foreground))'
-  			},
-  			secondary: {
-  				DEFAULT: 'hsl(var(--secondary))',
-  				foreground: 'hsl(var(--secondary-foreground))'
-  			},
-  			muted: {
-  				DEFAULT: 'hsl(var(--muted))',
-  				foreground: 'hsl(var(--muted-foreground))'
-  			},
-  			accent: {
-  				DEFAULT: 'hsl(var(--accent))',
-  				foreground: 'hsl(var(--accent-foreground))'
-  			},
-  			destructive: {
-  				DEFAULT: 'hsl(var(--destructive))',
-  				foreground: 'hsl(var(--destructive-foreground))'
-  			},
-  			border: 'hsl(var(--border))',
-  			input: 'hsl(var(--input))',
-  			ring: 'hsl(var(--ring))',
-  			chart: {
-  				'1': 'hsl(var(--chart-1))',
-  				'2': 'hsl(var(--chart-2))',
-  				'3': 'hsl(var(--chart-3))',
-  				'4': 'hsl(var(--chart-4))',
-  				'5': 'hsl(var(--chart-5))'
-  			},
   			sidebar: {
   				DEFAULT: 'hsl(var(--sidebar-background))',
   				foreground: 'hsl(var(--sidebar-foreground))',
@@ -60,9 +17,48 @@ export default {
   				border: 'hsl(var(--sidebar-border))',
   				ring: 'hsl(var(--sidebar-ring))'
   			}
-  		}
+  		},
+      borderColor:{
+        'primary' : '#00467F',
+      },
+      fontFamily: {
+        inter: ["Inter", 'sans-serif'],
+        roboto: ["Roboto", 'sans-serif'],
+        mono: ['var(--font-geist-mono)'],
+      },
+      backgroundColor: {
+        'light': '#e6ecf8',
+        'light-hover': '#d7e0f4', //'#c3d1ef',
+        // 'light': '#dfe4f3',
+        'dark': '#101829',
+        // Light Theme
+        'primary': '#00467F', // #334155
+        'primary-hover': '#0062b3',
+        'secondary' : '#6b7280',
+        'dark-gray' : '#3c3e44',
+        // Dark Theme
+        'dark-primary' : '#0f111a',
+        'dark-primary-hover': '#0062b3',
+        'dark-secondary': '#181f38',
+      },
+      textColor:{
+        'light': '#F7F7F8',
+        'gray': '#6b7280',
+        'light-gray' : '#7e8490',
+        'dark-gray': '#2c2e32',
+        'dark' : '#101829',
+        'success': '#8bdab9',
+        'success-hover': '#6fa790',
+        'primary': '#00467F',
+        'primary-hover': '#0062b3',
+        'secondary' : '#000046',
+        // Dark Them
+        'dark-primary': '#e6ecf8',
+        'dark-primary-hover': '#101829',
+        'dark-secondary': '#e6ecf8',
+        'dark-active': '#e6ecf8',
+      }
   	}
   },
-  plugins: [require("tailwindcss-animate")],
+  plugins: [],
 }
-
